@@ -9,7 +9,8 @@ soh: new Set(['southern comfort', 'cranberry juice']), fn: new Set( ['peach schn
 mad: new Set(['vodka', 'cranberry juice', 'orange juice']), sex: new Set(['vodka', 'peach schnapps', 'orange juice', 'cranberry juice']),
 mbb: new Set(['rum', 'pineapple juice', 'cranberry juice']), mb: new Set(['vodka', 'melon liquor', 'orange juice']), 
 slc: new Set(['vodka', 'sloe gin', 'southern comfort', 'orange juice']),
-dst: new Set(['rum', 'ginger beer', 'lime juice']),mm: new Set(['vodka', 'ginger beer', 'lime juice']) }
+dst: new Set(['rum', 'ginger beer', 'lime juice']),mm: new Set(['vodka', 'ginger beer', 'lime juice']),
+ws: new Set(['whiskey', 'sour mix']), rs: new Set(['rum', 'sour mix']), tom: new Set(['gin', 'lemon juice', 'simple syrup', 'club soda']) }
 
 
 
@@ -18,7 +19,7 @@ let all_ingredients = ['vodka', 'tequila', 'rum', 'gin', 'bourbon', 'whiskey',
                         'triple sec', 'blue curacao', 'orange liquer', 'orange juice', 'aperol',
                         'seltzer', 'tonic','sprite', 'coke','ginger ale', 'ginger beer', 'grenandine', 'sloe gin', 'pineapple juice', 
                         'southern comfort', 'lime juice', 'lemon juice', 'sour mix',
-                        'grapefruit juice', 'cranberry juice', 'amaretto', 'peach schnapps', 'melon liquor']
+                        'grapefruit juice', 'cranberry juice', 'amaretto', 'peach schnapps', 'melon liquor', 'simple syrup']
 let all_ingredients_set = new Set(all_ingredients)
 let substitutable = ['triple sec', 'blue curacao', 'orange liquer', 'aperol',
 'seltzer', 'tonic','ginger ale', 'ginger beer', 'grenandine', 'sloe gin', 'lime juice', 
@@ -63,7 +64,10 @@ mbb: ['Malibu Bay Breeze', '- 1.5 oz Malibu (rum)<br>- Fill with half pineapple 
 mb: ['Melon Ball', '- 1 oz Vodka<br>- 0.5 oz Melon Liquor<br>- Fill with orange juice', path+'melon_ball.jpg'],
 slc: ['Sloe Comfortable Screw', '- 0.5 oz Vodka <br>- 0.5 oz Sloe Gin<br>- 0.5 oz Southern Comfort<br>- Fill with Orange Juice',path+'sloe_screw.jpg'],
 dst: ['Dark & Stormy', '- 1.5 oz (Dark) Rum<br>- 4 oz ginger beer<br>- Dash of lime juice<br>- Lime garnish', path+'darknstormy.jpg'],
-mm:['Moscow Mule', '- 1.5 oz Vodka<br>- 4 oz ginger beer<br>- Dash of lime juice<br>- Lime garnish', path+'moscow-mule.jpg']}
+mm:['Moscow Mule', '- 1.5 oz Vodka<br>- 4 oz ginger beer<br>- Dash of lime juice<br>- Lime garnish', path+'moscow-mule.jpg'],
+ws: ['Whiskey Sour','- 1.5 oz Whiskey<br>- 3 oz Sour Mix<br>- Cherry or orange garnish', path + 'whiskey_sour.jpg'],
+rs: ['Rum Sour','- 1.5 oz Rum<br>- 3 oz Sour Mix<br>- Cherry or orange garnish', path + 'rum_sour.jpg'],
+tom: ['Tom Collins','- 1 oz Gin<br>- 1 oz lemon juice<br>- 0.5 oz simple syrup<br>- Fill with seltzer<br>- lemon garnish', path + 'tom_collins.jpg']}
 console.log(drinks.margarita)
 let my_ingredients = []
 var slideIndex = 1;
@@ -75,6 +79,15 @@ var old_img2
 var arrows = false
 var boxes= []
 var boxes2= []
+var clear_bool = false
+// var adele = document.createElement('li')
+// adele.innerHTML = 'Adele'
+// var cl = document.createElement('span')
+// cl.className= 'close'
+// cl.innerHTML = 'x'
+// adele.appendChild(cl)
+// var h = document.getElementById('hi')
+// h.appendChild(adele)
 let isSubset = function(s1, s2)
 {
     return Array.from(s1).every((e)=>s2.has(e));
@@ -154,14 +167,14 @@ let returnDrink = function(s = new Set(my_ingredients)) {
             boxes = []
             num = 1
             
-            document.getElementById('x1').innerHTML = "We found 1 drink for you.<br><br>"
+            document.getElementById('x1').innerHTML = "We found "+"1".bold()+" drink for you.<br><br>"
             //console.log("We found 1 drink for you:")
             message += "We found 1 drink for you: <br>"
         }
         else{
-        console.log("We found "+ possible_drinks.length+" drinks for you")
-        message += "We found "+ possible_drinks.length+" drinks for you: <br>"
-        document.getElementById('x1').innerHTML = "We found "+ possible_drinks.length+" drinks for you.<br>"}
+        console.log("We found "+ String(possible_drinks.length).bold()+" drinks for you")
+        message += "We found "+ String(possible_drinks.length).bold()+" drinks for you: <br>"
+        document.getElementById('x1').innerHTML = "We found "+ String(possible_drinks.length).bold()+" drinks for you.<br>"}
         tn = document.getElementById("thumbnail")
         console.log("BOO:" +tn.childNodes)
         while (tn.firstChild) {
@@ -264,17 +277,17 @@ let returnDrink = function(s = new Set(my_ingredients)) {
             document.getElementById('x2').innerHTML = "<br><br>We also found another drink you can ~maybe~ make with substitutions.<br><br>"
         }
         else if(num_alt >1 && num>0){
-           alt_message+= "We also found " + num_alt+ " other drinks you can ~maybe~ make with substitutions.<br>"
-           document.getElementById('x2').innerHTML = "<br><br>We also found " + num_alt+ " other drinks you can ~maybe~ make with substitutions.<br><br>"
+           alt_message+= "We also found " + String(num_alt).bold()+ " other drinks you can ~maybe~ make with substitutions.<br>"
+           document.getElementById('x2').innerHTML = "<br><br>We also found " + String(num_alt).bold()+ " other drinks you can ~maybe~ make with substitutions.<br><br>"
         
         }
         else if(num_alt == 1 && num==0){
             alt_message+= "But we found a drink you can ~maybe~ make with substitutions.<br><br>"
-            document.getElementById('x2').innerHTML ="<br>But we found a drink you can ~maybe~ make with substitutions.<br><br>"
+            document.getElementById('x2').innerHTML ="But we found a drink you can ~maybe~ make with substitutions.<br><br>"
         }
         else if(num_alt > 1 && num==0){
-            alt_message+= "But we found " + num_alt+ " drinks you can ~maybe~ make with substitutions.<br><br>"
-            document.getElementById('x2').innerHTML ="<br>But we found " + num_alt+ " other drinks you can ~maybe~ make with substitutions.<br>"
+            alt_message+= "But we found " + String(num_alt).bold()+ " drinks you can ~maybe~ make with substitutions.<br><br>"
+            document.getElementById('x2').innerHTML ="But we found " + String(num_alt).bold()+ " other drinks you can ~maybe~ make with substitutions.<br>"
      
         }
         let j = 0
@@ -368,6 +381,7 @@ function buttonClicked() {
 
 function addIngredient(){
 
+    var my_list =  document.getElementById('my_list')
     var input = document.getElementById("ingredients").value;
     console.log(input)
     let my_ingredients_set = new Set(my_ingredients)
@@ -375,7 +389,17 @@ function addIngredient(){
     console.log(ingredient_message)
     if (all_ingredients_set.has(input) && !(my_ingredients_set.has(input)) ){
         
+        var new_div = document.createElement('div')
         my_ingredients.push(input)
+        var new_ing = document.createElement('li')
+        new_ing.innerHTML = input
+        var cl = document.createElement('span')
+        cl.className= 'close'
+        cl.innerHTML = 'x'
+        new_ing.appendChild(cl)
+        new_div.appendChild(new_ing)
+        my_list.appendChild(new_div)
+        //new_div.appendChild(my_list)
         console.log(my_ingredients)
         }
     
@@ -396,9 +420,78 @@ function addIngredient(){
     // return my_ingredients;
     
 
-    document.getElementById('my_ingredients').innerHTML = ingredient_message;
+    //document.getElementById('my_ingredients').innerHTML = ingredient_message;
 
     document.getElementById("ingredients").value = ''
+    /* Get all elements with class="close" */
+    var closebtns = document.getElementsByClassName("close");
+    var i;
+
+    for (let i = 0; i < closebtns.length; i++) {
+        closebtns[i].addEventListener("click", function() {
+            var cb1 = document.getElementsByClassName("close")
+            if (cb1.length ==1)
+            {
+                clearAll()
+
+            }
+            else{
+                this.parentElement.style.display = 'none';
+                this.parentElement.remove()
+                my_ingredients = []
+                var cb = document.getElementsByClassName("close")
+                for (let j = 0; j<cb.length;j++)
+                {
+                    ingr =String(cb[j].parentElement.innerText.slice(0,-1))
+                    my_ingredients.push(ingr)
+                }
+                my_list2  =document.getElementById('my_list')
+                while (my_list2.firstChild) {
+                    my_list2.removeChild(my_list2.firstChild);
+                }
+                for (let i in my_ingredients){
+                
+                    var new_div = document.createElement('div')
+                    var new_ing = document.createElement('li')
+                    new_ing.innerHTML = my_ingredients[i]
+                    var cl = document.createElement('span')
+                    cl.className= 'close'
+                    cl.innerHTML = 'x'
+                    new_ing.appendChild(cl)
+                    new_div.appendChild(new_ing)
+                    my_list2.appendChild(new_div)
+                }
+            }
+
+            console.log(my_ingredients)
+    });
+        if (my_ingredients.length>=1 && !clear_bool)
+        {
+            var c= document.getElementById('clear');
+            var clearAllButton = document.createElement('button')
+            clearAllButton.type = 'button'
+            clearAllButton.className = 'give_button'
+            clearAllButton.onclick= function(){
+                my_ingredients = []
+                var cbuttons = document.getElementsByClassName('close')
+                for (let i = cbuttons.length-1; i >= 0; i--) {
+                    cbuttons[i].parentElement.style.display = 'none';
+                    cbuttons[i].parentElement.remove()
+                    clear_bool = false
+                    clearAllButton.remove()
+                }
+                my_list2  =document.getElementById('my_list')
+                while (my_list2.firstChild) {
+                    my_list2.removeChild(my_list2.firstChild);
+                }
+
+            }
+            clearAllButton.innerHTML = 'Clear All'
+            c.appendChild(clearAllButton)
+            clear_bool = true
+
+        }
+    }
 }
 
 function submitClicked(){
@@ -499,6 +592,24 @@ function addSlides(){
     var src = document.getElementById("y");
     src.appendChild(img)
 }
+function clearAll(){
+    my_ingredients = []
+    var cbuttons = document.getElementsByClassName('close')
+    for (let i = cbuttons.length-1; i >= 0; i--) {
+        cbuttons[i].parentElement.style.display = 'none';
+        cbuttons[i].parentElement.remove()
+        clear_bool = false
+        //clearAllButton.remove()
+    }
+    my_list2  =document.getElementById('my_list')
+    while (my_list2.firstChild) {
+        my_list2.removeChild(my_list2.firstChild);
+    }
+    
+
+    
+}
+
 
 
 

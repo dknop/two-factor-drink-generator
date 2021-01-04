@@ -1,4 +1,5 @@
 <html>
+
     <head>
         <meta charset="utf-8">
         <title>website </title> 
@@ -7,20 +8,37 @@
         
     </head>
     <body>
-        <h1 id="heading">2! Bar</h1>
+        <h1 id="heading">2! Drink Generator</h1>
+        
 
-
+        </div>
+       
         <form>
-   
+            <div class = 'center'>
+            
             <label for="ingredients">Enter an ingredient: </label>
             <input type="text" id="ingredients" name="ingredients" list="ingredients-list">
             <!-- <label for="lname">Last name:</label> -->
             <!-- <input type="text" id="lname" name="lname"><br><br> -->
             <!-- <input type="submit" onclick = "addIngredient()" value="Add"> -->
             <button type="button" onclick = "addIngredient()">Add </button>
+            </div>
           </form>
-          <div id='my_ingredients'>My ingredients: </div>
-          <button type="button" onclick="submitClicked()">Give me a drink</button>
+          <div class = 'center'>
+          <div id='my_ingredients'>My ingredients:<br> </div>
+          
+          <div id='my_list' class ='grid-container2'> 
+            
+          </div>
+          <div id = 'clear'>
+          <!-- <button class ='give_button' type="button" onclick = "clearAll()">Clear All </button> -->
+        </div>
+          <div> <br><br>   </div>
+        </div>
+        <div class = 'center'>
+          <button class= 'give_button'type="button" onclick="submitClicked()">Give me a drink</button>
+        </div>
+    </div>
             <!-- <div id='results'></div> -->
             <!-- <div id='num'> </div> -->
             <!-- <div id='drinks'></div> -->
@@ -58,6 +76,7 @@
             <option>amaretto</option>
             <option>peach schnapps</option>
             <option>melon liquor</option>
+            <option>simple syrup</option>
         </datalist>
         <div class="w3-center" id = 'x1'> </div>
         <div class= 'grid-container'>
@@ -80,6 +99,7 @@
         
         <div class="slideshow-container2">
             <h2 class="w3-center" id = 'x2'> </h2>
+            <div> <br> <br></div>
             <div id = 'title2' class = 'header'></div>
             <div class="w3-content w3-display-container" id ='y2'>
             </div>

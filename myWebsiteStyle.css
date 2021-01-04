@@ -11,7 +11,7 @@
     width: 20vw;
     height:35px
     /* height: 10vh; */
-    align-items: center;
+    align-items : center;
 }
 h1{
     text-align: center;
@@ -27,6 +27,11 @@ h1{
 .box > span {
     text-align: center;
 }
+.center{
+    margin-left: 5%;
+
+}
+
 
 
 
@@ -44,8 +49,16 @@ vertical-align: top;
 }
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-columns: 2fr 3fr 5fr;
     grid-gap: 20px;
+    position: center;
+    vertical-align: middle;
+    align-items: center;
+}
+.grid-container2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
     position: center;
     vertical-align: middle;
     align-items: center;
@@ -61,8 +74,8 @@ vertical-align: top;
 display: none;
 }
 .w3-center{
-    text-align: center;
-    font-size: 25;
+    margin-left: 5%;
+    font-size: 20;
 }
 /* Next & previous buttons */
 .prev, .next {
@@ -140,6 +153,34 @@ background-color: #717171;
 animation-name: fade;
 animation-duration: 1.5s;
 }
+li{
+border: 1px solid #ddd;
+margin-top: -1px; /* Prevent double borders */
+background-color: #f6f6f6;
+padding: 12px;
+text-decoration: none;
+font-size: 18px;
+color: black;
+display: block;
+position: relative;
+
+}
+
+/* Add a light grey background color on hover */
+li:hover {
+background-color: #eee;
+}
+
+/* Style the close button (span) */
+.close {
+cursor: pointer;
+position: absolute;
+top: 50%;
+right: 0%;
+padding: 12px 16px;
+transform: translate(0%, -50%);
+}
+.close:hover {background: #bbb;}
 
 @-webkit-keyframes fade {
 from {opacity: .4} 
