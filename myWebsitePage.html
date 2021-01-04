@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>website </title> 
+        <link rel="stylesheet" href="myWebsiteStyle.css">
+        </head>
+        
+    </head>
+    <body>
+        <h1 id="heading">2! Bar</h1>
+
+
+        <form>
+   
+            <label for="ingredients">Enter an ingredient: </label>
+            <input type="text" id="ingredients" name="ingredients" list="ingredients-list">
+            <!-- <label for="lname">Last name:</label> -->
+            <!-- <input type="text" id="lname" name="lname"><br><br> -->
+            <!-- <input type="submit" onclick = "addIngredient()" value="Add"> -->
+            <button type="button" onclick = "addIngredient()">Add </button>
+          </form>
+          <div id='my_ingredients'>My ingredients: </div>
+          <button type="button" onclick="submitClicked()">Give me a drink</button>
+            <!-- <div id='results'></div> -->
+            <!-- <div id='num'> </div> -->
+            <!-- <div id='drinks'></div> -->
+            <div id='message'></div>
+            <div id='alt_message'></div>
+         
+        
+        <datalist id="ingredients-list">
+            <option>vodka</option>
+            <option>tequila</option>
+            <option>rum</option>
+            <option>gin</option>
+            <option>bourbon</option>
+            <option>whiskey</option>
+            <option>triple sec</option>
+            <option>blue curacao</option>
+            <option>orange liquer</option>
+            <option>orange juice</option>
+            <option>aperol</option>
+            <option>seltzer</option>
+            <option>tonic</option>
+            <option>sprite</option>
+            <option>coke</option>
+            <option>ginger ale</option>
+            <option>ginger beer</option>
+            <option>grenandine</option>
+            <option>sloe gin</option>
+            <option>pineapple juice</option>
+            <option>southern comfort</option>
+            <option>lime juice</option>
+            <option>lemon juice</option>
+            <option>sour mix</option>
+            <option>grapefruit juice</option>
+            <option>cranberry juice</option>
+            <option>amaretto</option>
+            <option>peach schnapps</option>
+            <option>melon liquor</option>
+        </datalist>
+        <div class="w3-center" id = 'x1'> </div>
+        <div class= 'grid-container'>
+        <div id= 'thumbnail'>
+        </div>
+        <div class="slideshow-container">
+           
+            <div id = 'title1'class ='header'></div>
+            <div class="w3-content w3-display-container" id ='y'>
+            </div>
+        </div>
+        <div id = 'recipe1'></div>
+
+        
+     </div>
+        <div class="w3-center" id = 'x2'> </div>
+        <div class= 'grid-container'>
+        <div id= 'thumbnail2'>
+        </div>
+        
+        <div class="slideshow-container2">
+            <h2 class="w3-center" id = 'x2'> </h2>
+            <div id = 'title2' class = 'header'></div>
+            <div class="w3-content w3-display-container" id ='y2'>
+            </div>
+
+        </div> 
+        <div>
+            <div id = 'recipe2'></div>
+            <div> <br></div>
+            <div id = 'sub2'></div>
+        </div>
+    </div>
+        
+    </body>
+    
+
+    <script src='./myWebsite.js'></script>
+
+</html>
