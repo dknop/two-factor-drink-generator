@@ -10,7 +10,10 @@ mad: new Set(['vodka', 'cranberry juice', 'orange juice']), sex: new Set(['vodka
 mbb: new Set(['rum', 'pineapple juice', 'cranberry juice']), mb: new Set(['vodka', 'melon liquor', 'orange juice']), 
 slc: new Set(['vodka', 'sloe gin', 'southern comfort', 'orange juice']),
 dst: new Set(['rum', 'ginger beer', 'lime juice']),mm: new Set(['vodka', 'ginger beer', 'lime juice']),
-ws: new Set(['whiskey', 'sour mix']), rs: new Set(['rum', 'sour mix']), tom: new Set(['gin', 'lemon juice', 'simple syrup', 'club soda']) }
+ws: new Set(['whiskey', 'sour mix']), rs: new Set(['rum', 'sour mix']), tom: new Set(['gin', 'lemon juice', 'simple syrup', 'club soda']),
+dq: new Set(['rum', 'lime juice', 'simple syrup']), bh: new Set(['rum', 'vodka', 'blue curacao', 'pineapple juice']),
+pbj: new Set(['vodka', 'amaretto', 'frangelico', 'chambord', 'cranberry juice']),
+ ala: new Set(['southern comfort', 'amaretto', 'sloe gin', 'orange juice']), swa: ['jagermeister', 'melon liquor', 'chambord', 'sour mix'] }
 
 
 
@@ -19,7 +22,8 @@ let all_ingredients = ['vodka', 'tequila', 'rum', 'gin', 'bourbon', 'whiskey',
                         'triple sec', 'blue curacao', 'orange liquer', 'orange juice', 'aperol',
                         'seltzer', 'tonic','sprite', 'coke','ginger ale', 'ginger beer', 'grenandine', 'sloe gin', 'pineapple juice', 
                         'southern comfort', 'lime juice', 'lemon juice', 'sour mix',
-                        'grapefruit juice', 'cranberry juice', 'amaretto', 'peach schnapps', 'melon liquor', 'simple syrup']
+                        'grapefruit juice', 'cranberry juice', 'amaretto', 'peach schnapps', 'melon liquor', 'simple syrup',
+                        'frangelico', 'chambord', 'jagermeister']
 let all_ingredients_set = new Set(all_ingredients)
 let substitutable = ['triple sec', 'blue curacao', 'orange liquer', 'aperol',
 'seltzer', 'tonic','ginger ale', 'ginger beer', 'grenandine', 'sloe gin', 'lime juice', 
@@ -64,18 +68,22 @@ mbb: ['Malibu Bay Breeze', '- 1.5 oz Malibu (rum)<br>- Fill with half pineapple 
 mb: ['Melon Ball', '- 1 oz Vodka<br>- 0.5 oz Melon Liquor<br>- Fill with orange juice', path+'melon_ball.jpg'],
 slc: ['Sloe Comfortable Screw', '- 0.5 oz Vodka <br>- 0.5 oz Sloe Gin<br>- 0.5 oz Southern Comfort<br>- Fill with Orange Juice',path+'sloe_screw.jpg'],
 dst: ['Dark & Stormy', '- 1.5 oz (Dark) Rum<br>- 4 oz ginger beer<br>- Dash of lime juice<br>- Lime garnish', path+'darknstormy.jpg'],
-mm:['Moscow Mule', '- 1.5 oz Vodka<br>- 4 oz ginger beer<br>- Dash of lime juice<br>- Lime garnish', path+'moscow-mule.jpg'],
+mm:['Moscow Mule', '- 1.5 oz Vodka<br>- 4 oz ginger beer<br>- Dash of lime juice<br>- Lime garnish', 'images/moscow-mule.jpg'],
 ws: ['Whiskey Sour','- 1.5 oz Whiskey<br>- 3 oz Sour Mix<br>- Cherry or orange garnish', path + 'whiskey_sour.jpg'],
 rs: ['Rum Sour','- 1.5 oz Rum<br>- 3 oz Sour Mix<br>- Cherry or orange garnish', path + 'rum_sour.jpg'],
-tom: ['Tom Collins','- 1 oz Gin<br>- 1 oz lemon juice<br>- 0.5 oz simple syrup<br>- Fill with seltzer<br>- lemon garnish', path + 'tom_collins.jpg']}
+tom: ['Tom Collins','- 1 oz Gin<br>- 1 oz lemon juice<br>- 0.5 oz simple syrup<br>- Fill with seltzer<br>- lemon garnish', path + 'tom_collins.jpg'],
+dq:['Daiquiri','- 3 oz (Light) Rum<br>- 1 oz lime juice<br>- 0.5 oz simple syrup<br>- lime garnish', path + 'daiquiri.jpg'],
+bh:['Blue Hawaiian','- 0.75 oz Rum<br>- 0.75 oz Vodka<br>- 0.5 oz Blue Curacao<br>- Fill with pineapple juice<br>- lemon garnish', path + 'blue_hawaiian.jpg'],
+pbj:['Peanut Butter & Jelly', '- 0.75 oz Vodka<br>- 0.75 oz Amaretto<br>- 0.75 oz Frangelico<br>- 0.75 oz Chambord<br>- Fill with cranberry juice<br>- lime garnish', path + 'pbj.jpg'],
+ala: ['Alabama Slammer', '- 1 oz Southern Comfort<br>- 0.5 oz Amaretto<br>- 0.5 oz Sloe Gin<br>- Fill with orange juice<br>- orange garnish', path + 'slammer.jpg'],
+swa: ['Sex w/ an Alligator', '- 1 oz Jagermeister<br>- 1 oz Melon Liquor<br>- 1 oz Chambord<br>- 1 oz sour mix<br>- No garnish', path + 'alligator.jpg']}
 console.log(drinks.margarita)
 let my_ingredients = []
 var slideIndex = 1;
 // showDivs(slideIndex);
 var pressed = false
 var pressed2 = false
-var old_img
-var old_img2
+
 var arrows = false
 var boxes= []
 var boxes2= []
@@ -129,6 +137,46 @@ console.log(isReplace(new Set(['vodka','tequila'])))
 
 // return: [num, drinks, message]
 let returnDrink = function(s = new Set(my_ingredients)) {
+    old_img = null
+    old_img2 = null
+    tn2 = document.getElementById("thumbnail2")
+    console.log("BOO:" +tn2.childNodes)
+    while (tn2.firstChild) {
+        tn2.removeChild(tn2.firstChild);
+    }
+    tn1 = document.getElementById("thumbnail")
+    console.log("BOO:" +tn1.childNodes)
+    while (tn1.firstChild) {
+        tn1.removeChild(tn1.firstChild);
+    }
+    t1 = document.getElementById("title1")
+    while (t1.firstChild) {
+        t1.removeChild(t1.firstChild);
+    }
+    t2 = document.getElementById("title2")
+    while (t2.firstChild) {
+        t2.removeChild(t2.firstChild);
+    }
+    y = document.getElementById("y")
+    while (y.firstChild) {
+        y.removeChild(y.firstChild);
+    }
+    y2 = document.getElementById("y2")
+    while (y2.firstChild) {
+        y2.removeChild(y2.firstChild);
+    }
+    r1 = document.getElementById("recipe1")
+    while (r1.firstChild) {
+        r1.removeChild(r1.firstChild);
+    }
+    r2 = document.getElementById("recipe2")
+    while (r2.firstChild) {
+        r2.removeChild(r2.firstChild);
+    }
+    s2 = document.getElementById("sub2")
+    while (s2.firstChild) {
+        s2.removeChild(s2.firstChild);
+    }
     let returnList = []
     let num = 0
     let message = '';
@@ -430,14 +478,13 @@ function addIngredient(){
     for (let i = 0; i < closebtns.length; i++) {
         closebtns[i].addEventListener("click", function() {
             var cb1 = document.getElementsByClassName("close")
-            if (cb1.length ==1)
+            if (cb1.length ==0)
             {
                 clearAll()
-
             }
             else{
                 this.parentElement.style.display = 'none';
-                this.parentElement.remove()
+                this.parentElement.parentElement.remove()
                 my_ingredients = []
                 var cb = document.getElementsByClassName("close")
                 for (let j = 0; j<cb.length;j++)
@@ -446,25 +493,31 @@ function addIngredient(){
                     my_ingredients.push(ingr)
                 }
                 my_list2  =document.getElementById('my_list')
-                while (my_list2.firstChild) {
-                    my_list2.removeChild(my_list2.firstChild);
-                }
+                var cb2 = document.getElementsByClassName("close")
+                console.log(my_list2)
                 for (let i in my_ingredients){
-                
-                    var new_div = document.createElement('div')
-                    var new_ing = document.createElement('li')
-                    new_ing.innerHTML = my_ingredients[i]
-                    var cl = document.createElement('span')
-                    cl.className= 'close'
-                    cl.innerHTML = 'x'
-                    new_ing.appendChild(cl)
-                    new_div.appendChild(new_ing)
-                    my_list2.appendChild(new_div)
+                    cb2[i].parentElement.firstChild.innerText = my_ingredients[i]
                 }
-            }
+                // while (my_list2.firstChild) {
+                //     my_list2.removeChild(my_list2.firstChild);
+                // }
+                // for (let i in my_ingredients){
+                    
 
+                //     var new_div = document.createElement('div')
+                //     var new_ing = document.createElement('li')
+                //     new_ing.innerHTML = my_ingredients[i]
+                //     var cl = document.createElement('span')
+                //     cl.className= 'close'
+                //     cl.innerHTML = 'x'
+                //     new_ing.appendChild(cl)
+                //     new_div.appendChild(new_ing)
+                //     my_list2.appendChild(new_div)
+                }
+            
+    
             console.log(my_ingredients)
-    });
+        });
         if (my_ingredients.length>=1 && !clear_bool)
         {
             var c= document.getElementById('clear');
@@ -472,6 +525,8 @@ function addIngredient(){
             clearAllButton.type = 'button'
             clearAllButton.className = 'give_button'
             clearAllButton.onclick= function(){
+                pressed2= false
+                pressed = false
                 my_ingredients = []
                 var cbuttons = document.getElementsByClassName('close')
                 for (let i = cbuttons.length-1; i >= 0; i--) {
@@ -486,7 +541,7 @@ function addIngredient(){
                 }
 
             }
-            clearAllButton.innerHTML = 'Clear All'
+            clearAllButton.innerHTML = 'Clear Ingredients'
             c.appendChild(clearAllButton)
             clear_bool = true
 
@@ -531,9 +586,21 @@ function showDivs(n,titles,messages,pics) {
     img.style = "width:100%"
     var src = document.getElementById("y")
     if (!pressed){
-    src.appendChild(img)}
+    src.appendChild(img)
+    console.log("pressed: false: "+img.src)}
     else{
-        src.replaceChild(img, old_img)
+        console.log("pressed: true: "+img.src)
+        console.log(old_img)
+        console.log(src)
+        if (!old_img){
+            console.log(1)
+            src.appendChild(img)
+        }
+        else{
+            console.log(2)
+            console.log(old_img)
+            src.replaceChild(img, old_img)
+        }
     }
     old_img = img
     // console.log(titles)
@@ -559,7 +626,12 @@ function showDivs(n,titles,messages,pics) {
         if (!pressed2){
             src.appendChild(img)}
         else{
-            src.replaceChild(img, old_img2)
+            if (!old_img2){
+                src.appendChild (img)
+            }
+            else{
+                src.replaceChild(img, old_img2)
+            }
         }
         old_img2 = img
     // console.log(titles)
@@ -609,8 +681,3 @@ function clearAll(){
 
     
 }
-
-
-
-
-
