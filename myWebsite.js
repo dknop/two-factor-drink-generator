@@ -431,6 +431,7 @@ function addIngredient(){
 
     var my_list =  document.getElementById('my_list')
     var input = document.getElementById("ingredients").value;
+    input = input.toLowerCase()
     console.log(input)
     let my_ingredients_set = new Set(my_ingredients)
     let ingredient_message = "My ingredients:"
