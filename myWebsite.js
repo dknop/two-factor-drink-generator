@@ -491,7 +491,14 @@ function addIngredient(){
                 for (let j = 0; j<cb.length;j++)
                 {
                     ingr =String(cb[j].parentElement.innerText.slice(0,-1))
-                    my_ingredients.push(ingr)
+                    if (all_ingredients_set.has(ingr)){
+                        my_ingredients.push(ingr)
+                    }
+                    else if (all_ingredients_set.has(ingr.slice(0,-1)))
+                    {
+                        my_ingredients.push(ingr.slice(0,-1))
+                    }
+                    
                 }
                 my_list2  =document.getElementById('my_list')
                 var cb2 = document.getElementsByClassName("close")
